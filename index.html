@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>𝐍𝐎𝐑𝐓𝐇 | 𝐍.𝐑.𝐇</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #000; overflow: hidden; font-family: 'Tajawal', sans-serif; }
+
+    .bg {
+        position: fixed;
+        width: 100%; height: 100%;
+background-image:
+    linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(10,10,10,0.92) 100%),
+    url('./north.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        filter: brightness(0.65) contrast(1.1);
+        z-index: 1;
+    }
+    .bg::after {
+        content: '';
+        position: absolute;
+        width: 100%; height: 100%;
+        background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.18) 0%, transparent 65%);
+    }
+
+    .particles {
+        position: fixed; width: 100%; height: 100%; z-index: 2;
+        background-image: radial-gradient(2px 2px at 20% 30%, #D4AF37, transparent), radial-gradient(2px 2px at 60% 70%, #D4AF37, transparent), radial-gradient(1px 1px at 50% 50%, #D4AF37, transparent);
+        background-size: 200% 200%; animation: float 20s infinite linear; opacity: 0.25;
+    }
+    @keyframes float { 0% { background-position: 0% 0%; } 100% { background-position: 100% 100%; } }
+
+    .gate-container { position: fixed; width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; z-index: 3; perspective: 2000px; }
+    .gate { position: absolute; width: 50%; height: 100%; background: linear-gradient(145deg, #141414, #080808); border: 2px solid; border-image: linear-gradient(180deg, #D4AF37, #8B6914, #D4AF37) 1; box-shadow: inset 0 0 120px rgba(0,0,0,0.9); transition: transform 2.2s cubic-bezier(0.77, 0, 0.175, 1); backdrop-filter: blur(1px); }
+    .gate-left { left: 0; transform-origin: left; border-right: none; }
+    .gate-right { right: 0; transform-origin: right; border-left: none; }
+    .gate::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 60%; border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 10px; }
+
+    .content { position: absolute; z-index: 4; text-align: center; transition: 1.2s; padding: 0 20px; }
+    .kingdom-name { font-family: 'Amiri', serif; font-size: clamp(45px, 8vw, 75px); background: linear-gradient(90deg, #D4AF37, #FFF8DC, #D4AF37); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shine 3s infinite; letter-spacing: 10px; margin-bottom: 25px; text-shadow: 0 0 35px rgba(212, 175, 55, 0.7); }
+    @keyframes shine { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(1.5); } }
+    .ayah { color: #f0f0f0; font-family: 'Amiri', serif; font-size: clamp(18px, 2.5vw, 24px); line-height: 2; max-width: 650px; margin: 0 auto 35px; text-shadow: 0 2px 15px rgba(0,0,0,0.9); }
+    .ayah-ref { color: #D4AF37; font-size: 16px; display: block; margin-top: 12px; }
+    .enter-btn { padding: 18px 65px; background: linear-gradient(90deg, #8B6914, #D4AF37, #8B6914); border: none; color: #000; font-size: 22px; font-weight: 700; cursor: pointer; transition: 0.4s; letter-spacing: 4px; border-radius: 6px; box-shadow: 0 0 30px rgba(212, 175, 55, 0.5); }
+    .enter-btn:hover { transform: translateY(-6px) scale(1.05); box-shadow: 0 0 50px rgba(212, 175, 55, 0.9); }
+    .gate-container.open .gate-left { transform: rotateY(-105deg); }
+    .gate-container.open .gate-right { transform: rotateY(105deg); }
+    .gate-container.open .content { opacity: 0; transform: scale(0.9); }
+    .inner-light { position: fixed; width: 0%; height: 100%; left: 50%; transform: translateX(-50%); background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.45) 0%, transparent 70%); z-index: 2; transition: 2.5s; }
+    .gate-container.open .inner-light { width: 100%; }
+</style>
+</head>
+<body>
+    <div class="bg"></div>
+    <div class="particles"></div>
+    <div class="inner-light"></div>
+    <div class="gate-container" id="gate">
+        <div class="gate gate-left"></div>
+        <div class="content">
+            <h1 class="kingdom-name">NORTH</h1>
+            <div class="ayah">
+                وَاعْتَصِمُوا بِحَبْلِ اللَّهِ جَمِيعًا وَلَا تَفَرَّقُوا
+                <span class="ayah-ref">سورة آل عمران - 103</span>
+            </div>
+            <button class="enter-btn" onclick="openGate()">التالي </button>
+        </div>
+        <div class="gate gate-right"></div>
+    </div>
+<script>
+    function openGate() {
+        document.getElementById('gate').classList.add('open');
+        setTimeout(() => { 
+            window.location.href = "./NORTH.html";
+        }, 2300);
+    }
+</script>
+</body>
+</html>
